@@ -1,0 +1,24 @@
+CREATE TABLE listings(id BigInt, listing_url string, scrape_id bigint, last_scraped Date, source string, name string,
+description string, neighborhood_overview string, picture_url string, host_id BigInt, host_url string, host_name string,
+host_since string, host_location string, host_about string, host_response_time string,	host_response_rate string,	
+host_acceptance_rate string, host_is_superhost string, host_thumbnail_url string,host_picture_url string,	
+host_neighbourhood string, host_listings_count string,host_total_listings_count string,	host_verifications string,	
+host_has_profile_pic string, host_identity_verified string, neighbourhood string, neighbourhood_cleansed string,	
+neighbourhood_group_cleansed string, latitude Decimal(10,8), longitude Decimal(11,8),	
+property_type string, room_type string, accommodates int, bathrooms int, bathrooms_text string,
+bedrooms int, beds int, amenities string, price double, minimum_nights int, maximum_nights int,	
+minimum_minimum_nights int, maximum_minimum_nights int,	minimum_maximum_nights int,maximum_maximum_nights int, 	
+minimum_nights_avg_ntm double,maximum_nights_avg_ntm double, calendar_updated Date, has_availability string, 
+availability30 int, availability60 int, availability90 int,	availability365 int, calendar_last_scraped Date,	
+number_of_reviews int, number_of_reviews_ltm int, number_of_reviews_l30d int,	
+first_review Date, last_review Date, review_scores_rating double, review_scores_accuracy double, review_scores_cleanliness double,	
+review_scores_checkin double, review_scores_communication double, review_scores_location double, review_scores_value double,
+license string, instant_bookable string, calculated_host_listings_count int, calculated_host_listings_count_entire_homes int,	
+calculated_host_listings_count_private_rooms int, calculated_host_listings_count_shared_rooms int, reviews_per_month double)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ',' 
+STORED AS TEXTFILE
+tblproperties ("skip.header.line.count"="1");
+
+LOAD DATA LOCAL INPATH 'Downloads/Project_dataset/listings_clean.csv'
+OVERWRITE INTO TABLE listings;

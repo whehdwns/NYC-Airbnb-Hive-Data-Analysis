@@ -1,0 +1,14 @@
+CREATE TABLE calendar(listing_id BigInt, 
+calendar_date Date,
+available string,
+price double,
+adjusted_price string,
+minimum_nights int,
+maximum_nights int)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ',' 
+STORED AS TEXTFILE
+tblproperties ("skip.header.line.count"="1");
+
+LOAD DATA LOCAL INPATH 'Downloads/Project_dataset/calendar.csv'
+OVERWRITE INTO TABLE calendar;
